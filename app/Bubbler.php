@@ -11,10 +11,6 @@ use App\Rating;
 
 class Bubbler extends Model
 {
-    public function suburb() {
-        return $this->park()->getResults()->suburb();
-    }
-
     public function park() {
         return $this->belongsTo(Park::class);
     }

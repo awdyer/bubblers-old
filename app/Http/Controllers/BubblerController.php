@@ -24,12 +24,4 @@ class BubblerController extends Controller
     public function show($id) {
         return response()->json($this->bubblers->get($id));
     }
-
-
-//
-//    public function listIndex(Request $request) {
-//        return view('bubblers.index', [
-//            'bubblers' => $this->bubblers->all()
-//        ]);
-//    }
 }

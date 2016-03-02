@@ -31,6 +31,5 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/bubblers/{bubbler}', 'BubblerController@show');
     });
 
-
     Route::auth();
 });
