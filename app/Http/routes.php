@@ -11,25 +11,23 @@
 |
 */
 
-Route::get('/', 'BubblerController@index');
+$api = app('Dingo\Api\Routing\Router');
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
+Route::get('/', function() {
+    return 'Sup.';
+});
 
-Route::group(['middleware' => ['web']], function () {
+$api->version('v1', function($api) {
 
-    Route::group(['prefix' => 'api'], function () {
-        Route::get('/bubblers', 'BubblerController@index');
-        Route::get('/bubblers/{bubbler}', 'BubblerController@show');
+    // JWT auth routes
+    $api->post('auth/login', '\App\Http\Controllers\AuthController@login');
+    $api->post('auth/signup', '\App\Http\Controllers\AuthController@signup');
+    $api->post('auth/recovery', '\App\Http\Controllers\AuthController@recovery');
+    $api->post('auth/reset', '\App\Http\Controllers\AuthController@reset');
+
+    // Protected routes
+    $api->group(['middleware' => 'api.auth'], function ($api) {
+        $api->get('/bubblers/{id}', '\App\Http\Controllers\BubblerController@show');
+        $api->get('bubblers', '\App\Http\Controllers\BubblerController@index');
     });
-
-    Route::auth();
 });

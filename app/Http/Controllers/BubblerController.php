@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Bubbler;
 use App\Repositories\BubblerRepository;
+use App\Transformers\BubblerTransformer;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class BubblerController extends Controller
+
+class BubblerController extends ApiController
 {
     protected $bubblers;
 
@@ -18,10 +20,10 @@ class BubblerController extends Controller
     }
 
     public function index() {
-        return response()->json($this->bubblers->all());
+        return $this->response->collection($this->bubblers->all(), new BubblerTransformer);
     }
 
     public function show($id) {
-        return response()->json($this->bubblers->get($id));
+        return $this->response->item($this->bubblers->get($id), new BubblerTransformer);
     }
 }

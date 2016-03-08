@@ -9,10 +9,10 @@ use App\Bubbler;
 class BubblerRepository
 {
     public function all() {
-        return Bubbler::with('park.suburb')->get();
+        return Bubbler::all()->take(10);
     }
 
     public function get($id) {
-        return Bubbler::find($id);
+        return Bubbler::findOrFail($id);
     }
 }
