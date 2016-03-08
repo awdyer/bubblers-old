@@ -1,27 +1,49 @@
-# Laravel PHP Framework
+## Laravel API Boilerplate
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This repo provides an example starter pack for building an API in Laravel. It is built on the following packages:
+- JWT-Auth - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
+- Dingo API - [dingo/api](https://github.com/dingo/api)
+- Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Installation
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+- `composer install`
+- `php artisan key:generate`
+- `php artisan jwt:generate`
 
-## Official Documentation
+## Configuration
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+The following files may be of interest when configuring the API:
 
-## Contributing
+- _.env.example_
+- _config/api.php_
+- _config/jwt.php_
+- _config/account.php_
+- _config/cors.php_
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+For more details, see the documentation for the respective plugins.
 
-## Security Vulnerabilities
+## Authentication
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+### Signup
 
-## License
+Perform a POST request to _/auth/signup_ with the following body fields:
+- name
+- email
+- password
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+If successful, the user will automatically be logged in and a JWT token will be returned which should be used to authenticate requests.
+
+### Login
+
+Perform a POST request to _/auth/login_ with the following body fields:
+- email
+- password
+
+If successful, a JWT token will be returned which should be used to authenticate requests.
+
+### Authenticating Requests
+
+There are 2 ways to authenticate a request:
+- include a query parameter _token=eyJ0eXAiO..._
+- include an Authorization header: _Authorization: Bearer eyJ0eXAiO..._
