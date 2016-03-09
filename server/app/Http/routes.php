@@ -32,6 +32,8 @@ $api->version('v1', ['namespace' => '\App\Api\V1\Controllers'], function($api) {
         $api->group(['prefix' => 'bubblers'], function ($api) {
             $api->get('/', 'BubblerController@index');
             $api->get('{id}', 'BubblerController@show');
+
+            $api->get('{id}/comments', 'BubblerCommentController@index');
         });
     });
 });
