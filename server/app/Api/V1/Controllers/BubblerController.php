@@ -19,10 +19,12 @@ class BubblerController extends ApiController
     }
 
     public function index() {
-        return $this->response->collection($this->bubblers->all(), new BubblerTransformer);
+        $bubblers = $this->bubblers->all();
+        return $this->response->collection($bubblers, new BubblerTransformer);
     }
 
     public function show($id) {
-        return $this->response->item($this->bubblers->get($id), new BubblerTransformer);
+        $bubblers = $this->bubblers->get($id);
+        return $this->response->item($bubblers, new BubblerTransformer);
     }
 }
