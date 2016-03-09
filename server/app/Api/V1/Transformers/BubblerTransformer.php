@@ -22,7 +22,8 @@ class BubblerTransformer extends Fractal\TransformerAbstract
             'suburb' => [
                 'id' => $bubbler->park->suburb->id,
                 'name' => $bubbler->park->suburb->name
-            ]
+            ],
+            'rating' => $bubbler->rating()
         ];
     }
 }
