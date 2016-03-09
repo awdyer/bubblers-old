@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace App\Api\V1\Controllers;
 
 use Validator;
 use Config;

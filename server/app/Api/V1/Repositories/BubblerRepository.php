@@ -1,10 +1,9 @@
 <?php
 
 
-namespace app\Repositories;
+namespace App\Api\V1\Repositories;
 
-
-use App\Bubbler;
+use App\Api\V1\Models\Bubbler;
 
 class BubblerRepository
 {

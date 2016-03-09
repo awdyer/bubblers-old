@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use App\Comment;
-use App\Rating;
+use App\Api\V1\Models\Comment;
+use App\Api\V1\Models\Rating;
 
 class User extends Authenticatable
 {

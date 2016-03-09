@@ -1,12 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Api\V1\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-use App\Park;
-use App\Bubbler;
-
 
 class Suburb extends Model
 {

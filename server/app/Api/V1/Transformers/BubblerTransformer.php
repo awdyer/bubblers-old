@@ -1,10 +1,11 @@
 <?php
 
 
-namespace app\Transformers;
+namespace App\Api\V1\Transformers;
 
-use App\Bubbler;
 use League\Fractal;
+
+use App\Api\V1\Models\Bubbler;
 
 class BubblerTransformer extends Fractal\TransformerAbstract
 {

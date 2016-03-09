@@ -1,13 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Api\V1\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-use App\Suburb;
-use App\Park;
-use App\Comment;
-use App\Rating;
 
 class Bubbler extends Model
 {

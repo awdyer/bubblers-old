@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Api\V1\Controllers;
 
-use App\Bubbler;
-use App\Repositories\BubblerRepository;
-use App\Transformers\BubblerTransformer;
 use Illuminate\Http\Request;
 
+use App\Api\V1\Repositories\BubblerRepository;
+use App\Api\V1\Transformers\BubblerTransformer;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
 
 class BubblerController extends ApiController

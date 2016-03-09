@@ -1,13 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Api\V1\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 use App\User;
-use App\Bubbler;
 
-class Comment extends Model
+class Rating extends Model
 {
     public function user() {
         return $this->belongsTo(User::class);

@@ -17,17 +17,21 @@ Route::get('/', function() {
     return 'Sup.';
 });
 
-$api->version('v1', function($api) {
+$api->version('v1', ['namespace' => '\App\Api\V1\Controllers'], function($api) {
 
     // JWT auth routes
-    $api->post('auth/login', '\App\Http\Controllers\AuthController@login');
-    $api->post('auth/signup', '\App\Http\Controllers\AuthController@signup');
-    $api->post('auth/recovery', '\App\Http\Controllers\AuthController@recovery');
-    $api->post('auth/reset', '\App\Http\Controllers\AuthController@reset');
+    $api->post('auth/login', 'AuthController@login');
+    $api->post('auth/signup', 'AuthController@signup');
+    $api->post('auth/recovery', 'AuthController@recovery');
+    $api->post('auth/reset', 'AuthController@reset');
 
     // Protected routes
     $api->group(['middleware' => 'api.auth'], function ($api) {
-        $api->get('/bubblers/{id}', '\App\Http\Controllers\BubblerController@show');
-        $api->get('bubblers', '\App\Http\Controllers\BubblerController@index');
+
+        // /bubblers
+        $api->group(['prefix' => 'bubblers'], function ($api) {
+            $api->get('/', 'BubblerController@index');
+            $api->get('{id}', 'BubblerController@show');
+        });
     });
 });
