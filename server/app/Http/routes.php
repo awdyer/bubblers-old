@@ -25,12 +25,14 @@ $api->version('v1', ['namespace' => '\App\Api\V1\Controllers'], function($api) {
     $api->post('auth/recovery', 'AuthController@recovery');
     $api->post('auth/reset', 'AuthController@reset');
 
+    $api->get('/bubblers', 'BubblerController@index');
+
     // Protected routes
     $api->group(['middleware' => 'api.auth'], function ($api) {
 
         // /bubblers
         $api->group(['prefix' => 'bubblers'], function ($api) {
-            $api->get('/', 'BubblerController@index');
+
             $api->get('{id}', 'BubblerController@show');
 
             $api->get('{id}/comments', 'BubblerCommentController@index');
