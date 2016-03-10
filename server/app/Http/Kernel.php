@@ -15,6 +15,10 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+
+        // this is for development only! remove in production!!!
+        // or at least configure cors to actually block stuff
+        \Barryvdh\Cors\HandleCors::class
     ];
 
     /**
