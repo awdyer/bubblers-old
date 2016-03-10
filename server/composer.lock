@@ -120,12 +120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dingo/api.git",
-                "reference": "595436348703f03917cad512ee5bb67fcb9004fc"
+                "reference": "7e6dfe2d6fcfa31d6e7681ba6bb60c78d5584efc"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/dingo/api/zipball/7e6dfe2d6fcfa31d6e7681ba6bb60c78d5584efc",
-                "reference": "595436348703f03917cad512ee5bb67fcb9004fc",
+                "reference": "7e6dfe2d6fcfa31d6e7681ba6bb60c78d5584efc",
                 "shasum": ""
             },
             "require": {
@@ -188,7 +188,7 @@
                 "laravel",
                 "restful"
             ],
-            "time": "2016-03-06 23:10:10"
+            "time": "2016-03-08 01:12:53"
         },
         {
             "name": "dingo/blueprint",
