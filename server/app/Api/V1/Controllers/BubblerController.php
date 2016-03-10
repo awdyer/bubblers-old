@@ -18,9 +18,19 @@ class BubblerController extends ApiController
         $this->bubblers = $bubblers;
     }
 
-    public function index() {
-        $bubblers = $this->bubblers->all();
-        return $this->response->collection($bubblers, new BubblerTransformer);
+    public function index(Request $request) {
+        if ($request->has('lat') && $request->has('long')) {
+            // return all bubblers within optionally specified radius of latlong
+            $latitude = $request->input('lat');
+            $longitude = $request->input('long');
+            $radius = $request->input('radius');
+            return $this->bubblers->near($latitude, $longitude, $radius);
+        } else {
+            // return bubblers paginated in groups of no more than 100
+            $limit = min(100, $request->input('limit', 100));
+            $bubblers = $this->bubblers->paginated($limit);
+            return $this->response->paginator($bubblers, new BubblerTransformer);
+        }
     }
 
     public function show($id) {
