@@ -53,3 +53,7 @@ If successful, a JWT token will be returned which should be used to authenticate
 There are 2 ways to authenticate a request:
 - include a query parameter _token=eyJ0eXAiO..._
 - include an Authorization header: _Authorization: Bearer eyJ0eXAiO..._
+
+### Jenkins
+
+
