@@ -7,9 +7,15 @@ This repo provides an example starter pack for building an API in Laravel. It is
 
 ## Installation
 
-- `composer install`
-- `php artisan key:generate`
-- `php artisan jwt:generate`
+1. Create a new empty postgres database, and import _database/bubblers.backup_ (you can use the _Restore_ function in pgAdmin to do this).
+    - This will populate the database with data, as well as import required modules. Alternatively, you can run the migrations and import the required modules manually - see below.
+2. Create a _.env_ file in the _server_ directory (it's fine to simply copy _.env.example_, but make sure the database settings are configured properly)
+3. Run the following commands from the _server_ directory:
+``` bash
+$ composer install
+$ php artisan key:generate
+$ php artisan jwt:generate
+```
 
 ## Configuration
 
