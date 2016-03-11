@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="panel panel-default">
         <div class="panel-body">
             <h4>{{ bubbler.description }}</h4>
@@ -6,9 +7,16 @@
             <em>{{ bubbler.rating }} stars</em>
         </div>
     </div>
+</div>
 </template>
 
-<script>
+<style scoped>
+    .panel {
+        text-align: center;
+    }
+</style>
+
+<script type="text/babel">
     export default {
         props: ['bubbler']
     };
