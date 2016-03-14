@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a v-if="loggedIn" @click="logout" href="#">Logout</a>
+                        <a v-if="auth.loggedIn" @click="logout" href="#">Logout</a>
                         <a v-else v-link="'/login'">Login</a>
                     </li>
                </ul>
@@ -37,13 +37,12 @@
     export default {
         data() {
             return {
-                loggedIn: authService.loggedIn()
+                auth: authService.state
             };
         },
         methods: {
             logout() {
                 authService.logout();
-                this.loggedIn = false;
             }
         }
     };
