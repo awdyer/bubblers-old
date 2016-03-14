@@ -1,23 +1,18 @@
 import Vue from 'vue';
 import simpleStorage from 'simplestorage.js';
 import jwt from 'jwt-simple';
+import axios from 'axios';
 
 export default {
-    init,
     login,
     logout,
     loggedIn
 };
 
 const SECRET = 'Pr10RYh0f9Db0x7MQ4PmWYegBtYCE0uO';
-var $http;
-
-function init() {
-    $http = Vue.http;
-}
 
 function login(email, password) {
-    return $http.post('api/auth/login', { email, password })
+    return axios.post('auth/login', { email, password })
         .then(res => {
             let token = jwt.decode(res.data.token, SECRET);
             let ttl = token.exp * 1000 - Date.now();

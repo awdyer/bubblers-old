@@ -1,20 +1,13 @@
 import Vue from 'vue';
+import axios from 'axios';
 
 export default {
-    init,
     fetchAll
 };
-
-// http object
-var $http;
 
 // local cache of bubblers
 var bubblers = {};
 
-function init() {
-    $http = Vue.http;
-}
-
 function fetchAll() {
-    return $http.get('api/bubblers?limit=10');
+    return axios.get('bubblers?limit=10');
 }
