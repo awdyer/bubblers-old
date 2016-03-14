@@ -13,7 +13,7 @@
 
 <script type="text/babel">
     import BubblerPanel from './BubblerPanel';
-    import bubblerStore from '../Bubblers/bubblerStore';
+    import bubblers from './bubblers.service';
 
     export default {
         data() {
@@ -23,7 +23,7 @@
         },
         components: { BubblerPanel },
         created() {
-            bubblerStore.fetchAll()
+            bubblers.fetchAll()
                 .then(res => {
                     this.bubblers = res.data.data;
                 });

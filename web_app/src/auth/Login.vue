@@ -30,7 +30,7 @@
 </style>
 
 <script type="text/babel">
-    import authService from '../AuthService';
+    import auth from './auth.service';
 
     export default {
         data() {
@@ -41,7 +41,7 @@
         },
         methods: {
             login() {
-                authService.login(this.email, this.password).then(res => {
+                auth.login(this.email, this.password).then(res => {
                     this.$router.go('/');
                 }, res => {
                     alert("Unable to login!");

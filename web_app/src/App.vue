@@ -12,7 +12,7 @@
 </style>
 
 <script type="text/babel">
-    import Navbar from './components/Navbar';
+    import Navbar from './core/Navbar';
 
     export default {
         components: { Navbar }

@@ -32,17 +32,17 @@
 </style>
 
 <script type="text/babel">
-    import authService from '../AuthService';
+    import auth from '../auth/auth.service';
 
     export default {
         data() {
             return {
-                auth: authService.state
+                auth: auth.state
             };
         },
         methods: {
             logout() {
-                authService.logout();
+                auth.logout();
             }
         }
     };

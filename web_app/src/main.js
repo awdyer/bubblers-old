@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import App from './App';
 import routes from './routes';
-import bubblerStore from './Bubblers/bubblerStore';
-import authService from './AuthService';
 
 Vue.use(VueRouter);
 
