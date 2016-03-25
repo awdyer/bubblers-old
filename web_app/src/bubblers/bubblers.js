@@ -9,5 +9,5 @@ export default {
 var bubblers = {};
 
 function fetchAll() {
-    return axios.get('bubblers?limit=10');
+    return axios.get('bubblers');
 }

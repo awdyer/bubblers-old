@@ -1,38 +1,40 @@
 <template>
 <div>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" v-link="'/'">Bubblers</a>
-            </div>
-            <div class="collapse navbar-collapse">
-               <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a v-if="auth.loggedIn" @click="logout" href="#">Logout</a>
-                        <a v-else v-link="'/login'">Login</a>
-                    </li>
-               </ul>
-            </div>
-        </div>
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" v-link="'/'">Bubblers</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item" v-link="'/map'">
+                <a href="#" class="nav-link">Map</a>
+            </li>
+            <li class="nav-item" v-link="'/list'">
+                <a href="#" class="nav-link">List</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-xs-right">
+            <li v-if="auth.loggedIn" class="nav-item" >
+                <a @click.prevent="logout" href="#" class="nav-link">Logout</a>
+            </li>
+            <li v-else class="nav-item" v-link="'/login'">
+                <a href="#" class="nav-link">Login</a>
+            </li> 
+        </ul>
     </nav>
 </div>
 </template>
 
 <style>
     .navbar {
-        padding: 0 10px;
         border-radius: 0;
+        margin-bottom: 20px;
+    }
+
+    .navbar-brand {
+        padding-right: 10px;
     }
 </style>
 
 <script type="text/babel">
-    import auth from '../auth/auth.service';
+    import auth from '../auth/auth';
 
     export default {
         data() {

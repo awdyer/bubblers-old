@@ -2,19 +2,19 @@
 <div>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-                <div class="form-group">
+            <div class="card card-block">
+                <fieldset class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email"
                         value="andrew.dyer@dsiti.qld.gov.au"
                         @keydown.enter="login" v-model="email">
-                </div>
-                <div class="form-group">
+                </fieldset>
+                <fieldset class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password"
                         @keydown.enter="login" v-model="password">
-                </div>
-                <button type="button" class="btn btn-default" @click="login">
+                </fieldset>
+                <button type="button" class="btn btn-secondary" @click="login">
                     Login
                 </button>
             </div>
@@ -23,14 +23,9 @@
 </div>
 </template>
 
-<style>
-    .panel {
-        padding: 15px;
-    }
-</style>
-
 <script type="text/babel">
-    import auth from './auth.service';
+    import auth from './auth';
+    import nav from '../core/nav';
 
     export default {
         data() {
@@ -42,8 +37,8 @@
         methods: {
             login() {
                 auth.login(this.email, this.password).then(res => {
-                    this.$router.go('/');
-                }, res => {
+                    this.$router.go(nav.getPrevious());
+                }).catch(res => {
                     alert("Unable to login!");
                 });
             }

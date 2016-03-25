@@ -8,6 +8,8 @@
 </template>
 
 <script type="text/babel">
+    import 'bootstrap/dist/css/bootstrap.css';
+    
     import Navbar from './core/Navbar';
 
     export default {

@@ -12,18 +12,19 @@ export default {
     logout
 };
 
-const SECRET = 'Pr10RYh0f9Db0x7MQ4PmWYegBtYCE0uO';
+const SECRET = 'PYm9g9klZGV0Ta4wwbfKVmFSL5GPbeII';
 
 state.loggedIn = loggedIn(); // should this automatically be refreshed?
 
 function login(email, password) {
-    return axios.post('auth/login', { email, password })
-        .then(res => {
+    var promise = axios.post('auth/login', { email, password });
+    promise.then(res => {
             let token = jwt.decode(res.data.token, SECRET);
             let ttl = token.exp * 1000 - Date.now();
             simpleStorage.set('token', res.data.token, { TTL: ttl });
             state.loggedIn = true;
         });
+    return promise;
 }
 
 function logout() {

@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import App from './App';
 import routes from './routes';
+import auth from './auth/auth';
+import nav from './core/nav';
 
 Vue.use(VueRouter);
 
@@ -22,12 +24,29 @@ axios.interceptors.response.use(res => {
 });
 
 // set up router
-var router = new VueRouter();
+var router = new VueRouter({
+    // history: true,
+    linkActiveClass: 'active'
+});
 
 router.map(routes);
 
 router.redirect({
-    '*': '/list'
+    '*': '/map'
+});
+
+router.beforeEach(transition => {
+    if (transition.to.path === '/login' && auth.state.loggedIn) {
+        transition.abort();
+    } else {
+        transition.next();
+    }
+});
+
+router.afterEach(({from}) => {
+    if (from.path) {
+        nav.setPrevious(from.path);
+    }
 });
 
 router.start(App, 'app');

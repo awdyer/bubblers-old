@@ -1,19 +1,19 @@
 <template>
 <div>
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <bubbler-panel
+        <div class="col-md-6 col-md-offset-3">
+            <bubbler-card
                     v-for="bubbler in bubblers"
                     :bubbler="bubbler">
-            </bubbler-panel>
+            </bubbler-card>
         </div>
     </div>
 </div>
 </template>
 
 <script type="text/babel">
-    import BubblerPanel from './BubblerPanel';
-    import bubblers from './bubblers.service';
+    import BubblerCard from './BubblerCard';
+    import bubblers from './bubblers';
 
     export default {
         data() {
@@ -21,7 +21,7 @@
                 bubblers: []
             };
         },
-        components: { BubblerPanel },
+        components: { BubblerCard },
         created() {
             bubblers.fetchAll()
                 .then(res => {
