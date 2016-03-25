@@ -1,5 +1,3 @@
-/* global describe, it, expect, spyOn */
-
 import Vue from 'vue';
 import Login from 'src/auth/Login';
 
@@ -21,7 +19,7 @@ describe('Login.vue', () => {
         expect(vm.$el.querySelectorAll('input#password')).toBeDefined();
     });
 
-    it('should call auth.login', () => {
+    it('should call auth.login', done => {
         // prepare promise
         var promise = Promise.resolve(true);
 
@@ -58,6 +56,7 @@ describe('Login.vue', () => {
 
         promise.then(res => {
             expect($router.go).toHaveBeenCalled();
+            done(); // call this so spec doesn't finish before promise is re
         });
     });
 });
