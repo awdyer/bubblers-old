@@ -56,10 +56,7 @@ describe('Login.vue', () => {
 
         promise.then(res => {
             expect($router.go).toHaveBeenCalled();
-            done(); // call this so spec doesn't finish before promise is re
+            done(); // call this so spec doesn't finish before promise is resolved
         });
     });
 });
-
-// also see example testing a component with mocks at
-// https://github.com/vuejs/vue-loader-example/blob/master/test/unit/a.spec.js#L24-L49
